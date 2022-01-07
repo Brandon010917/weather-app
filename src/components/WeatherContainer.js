@@ -13,6 +13,8 @@ const WeatherContainer = () => {
   const [units, setUnits] = useState("metric");
   const [searchCurrentPosition, setSearchCurrentPosition] = useState(true);
 
+  const API_KEY = "111f122b0d0b10e5d383ace3828cc195";
+
   //Effect para obtener la latitud y longitud apenas carga la pagina
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -40,7 +42,7 @@ const WeatherContainer = () => {
 
     const handleWeatherData = async () => {
       try {
-        const url = `https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=1&units=${units}&appid=${process.env.REACT_APP_API_KEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=1&units=${units}&appid=${API_KEY}`;
 
         const response = await fetch(url);
 
@@ -68,7 +70,7 @@ const WeatherContainer = () => {
 
     const handleWeatherData = async () => {
       try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=${units}&appid=${process.env.REACT_APP_API_KEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=${units}&appid=${API_KEY}`;
 
         const response = await fetch(url);
 
