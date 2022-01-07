@@ -6,14 +6,14 @@ import WeatherInfo from "./WeatherInfo";
 
 const WeatherContainer = () => {
   // State
-  const [units, setUnits] = useState("metric");
-  const [weatherData, setWeatherData] = useState(null);
-  const [citySearch, setCitySearch] = useState("");
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+  const [citySearch, setCitySearch] = useState("");
+  const [units, setUnits] = useState("metric");
   const [searchCurrentPosition, setSearchCurrentPosition] = useState(true);
 
-  // Effect
+  //Effect para obtener la latitud y longitud apenas carga la pagina
   useEffect(() => {
     if ("geolocation" in navigator) {
       const geo_success = ({ coords }) => {
@@ -32,6 +32,7 @@ const WeatherContainer = () => {
     }
   }, []);
 
+  //Effect para hacer una peticion cada vez que la latitud y longitud cambia
   useEffect(() => {
     if (!lat || !lon) return;
 
@@ -59,6 +60,7 @@ const WeatherContainer = () => {
     handleWeatherData();
   }, [lat, lon, units, searchCurrentPosition]);
 
+  //Effect para hacer una peticion por nombre de una ciudad
   useEffect(() => {
     if (!citySearch) return;
 
