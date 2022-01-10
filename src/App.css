@@ -101,3 +101,13 @@ progress::-webkit-progress-value {
   border-radius: 100px;
   background-color: #ffec65;
 }
+
+/* Loader */
+.loader {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.loader-active {
+  opacity: 1;
+}

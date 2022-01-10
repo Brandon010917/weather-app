@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import WeatherHeader from "./WeatherHeader";
@@ -17,9 +17,17 @@ const WeatherInfo = ({
   units,
   handleCitySearch,
   setSearchCurrentPosition,
+  error,
+  citySearch,
 }) => {
   // State
   const [searchPlace, setSearchPlace] = useState(false);
+
+  useEffect(() => {
+    if (error) {
+      setSearchPlace(true);
+    }
+  }, [error]);
 
   // Get Time
   const time = new Date().toDateString();
@@ -38,6 +46,8 @@ const WeatherInfo = ({
         <SearchPlace
           handleSearchPlace={handleSearchPlace}
           handleCitySearch={handleCitySearch}
+          error={error}
+          citySearch={citySearch}
         />
       )}
 
@@ -48,7 +58,7 @@ const WeatherInfo = ({
         />
         <div className="mt-20 flex flex-col items-center">
           <img
-            className="w-40 h-44"
+            className="w-40 h-44 scale-110 md:scale-125"
             src={icon && `http://openweathermap.org/img/wn/${icon}@2x.png`}
             alt={description}
           />
