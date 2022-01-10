@@ -37,7 +37,11 @@ const Hightlights = ({
         Today’s Hightlights
       </h2>
       <div className="container hightlights-container mt-8">
-        <HightlightsCard windDeg={windDeg} windSpeed={windSpeed} />
+        <HightlightsCard
+          windDeg={windDeg}
+          windSpeed={windSpeed}
+          units={units}
+        />
         <HightlightsCard humidity={humidity} />
         <HightlightsCard pressure={pressure} />
       </div>

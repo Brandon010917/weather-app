@@ -8,7 +8,6 @@ const SearchForm = ({ handleCitySearch, handleSearchPlace }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /*  setLoader(true); */
     handleCitySearch(cityName);
     handleSearchPlace();
     setCityName("");

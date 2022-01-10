@@ -66,9 +66,7 @@ const WeatherContainer = () => {
       } catch (error) {
         setError(error);
       } finally {
-        setTimeout(() => {
-          setLoader(false);
-        }, 3000);
+        setLoader(false);
       }
     };
 
@@ -105,9 +103,7 @@ const WeatherContainer = () => {
         setWeatherData(null);
         setError(error);
       } finally {
-        setTimeout(() => {
-          setLoader(false);
-        }, 3000);
+        setLoader(false);
       }
     };
 
@@ -116,6 +112,8 @@ const WeatherContainer = () => {
 
   // Functions
   const handleCitySearch = (city) => {
+    if (!city) return;
+
     setLoader(true);
     setSearchCurrentPosition(false);
     setCitySearch(city);

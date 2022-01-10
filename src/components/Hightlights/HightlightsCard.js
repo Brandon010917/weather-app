@@ -1,7 +1,7 @@
 //Icons
 import { MdNavigation } from "react-icons/md";
 
-const HightlightsCard = ({ humidity, pressure, windDeg, windSpeed }) => {
+const HightlightsCard = ({ humidity, pressure, windDeg, windSpeed, units }) => {
   return (
     <div className="bg-blue-dark text-white text-center p-6 hightlights-card">
       {windSpeed >= 0 && (
@@ -9,7 +9,9 @@ const HightlightsCard = ({ humidity, pressure, windDeg, windSpeed }) => {
           <p>Wind status</p>
           <p className="flex items-end justify-center mt-4">
             <span className="text-6xl font-bold">{windSpeed || 0}</span>
-            <span className="text-4xl font-medium">mph</span>
+            <span className="text-4xl font-medium">
+              {units === "metric" ? "km/h" : "mph"}
+            </span>
           </p>
           <p className="flex items-center justify-center mt-6 gap-2">
             <MdNavigation
